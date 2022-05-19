@@ -1,0 +1,32 @@
+[
+  {
+    "index": "1000",
+    "birthDate": "1998-10-03",
+    "sex": "Masculin",
+    "status": "Randomizat",
+    "screeningDate": "2022-05-03",
+    "lastAppointmentId": "1",
+    "nextAppointmentId": "2",
+    "medicationCode": "A"
+  },
+  {
+    "index": "1001",
+    "birthDate": "1998-10-03",
+    "sex": "Feminin",
+    "status": "Randomizat",
+    "screeningDate": "2022-02-03",
+    "lastAppointmentId": "3",
+    "nextAppointmentId": "4",
+    "medicationCode": "B"
+  },
+  {
+    "index": "1002",
+    "birthDate": "1998-10-03",
+    "sex": "Masculin",
+    "status": "Randomizat",
+    "screeningDate": "2022-06-03",
+    "lastAppointmentId": "5",
+    "nextAppointmentId": "6",
+    "medicationCode": "A"
+  }
+]

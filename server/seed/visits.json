@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Screening",
+    "subjectId": "1",
+    "visitIndex": "0",
+    "date": "2021-07-15 08:00",
+    "medicationId": "1"
+  },
+  {
+    "name": "Randomizare",
+    "subjectId": "1",
+    "visitIndex": "1",
+    "date": "2021-07-15 08:00",
+    "medicationId": "1"
+  },
+  {
+    "name": "Screening",
+    "subjectId": "2",
+    "visitIndex": "0",
+    "date": "2021-07-15 08:00",
+    "medicationId": "2"
+  },
+  {
+    "name": "Randomizare",
+    "subjectId": "2",
+    "visitIndex": "1",
+    "date": "2021-07-15 08:00",
+    "medicationId": "2"
+  },
+  {
+    "name": "Screening",
+    "subjectId": "3",
+    "visitIndex": "0",
+    "date": "2021-07-15 08:00",
+    "medicationId": "2"
+  },
+  {
+    "name": "Randomizare",
+    "subjectId": "3",
+    "visitIndex": "1",
+    "date": "2021-07-15 08:00",
+    "medicationId": "2"
+  }
+]
