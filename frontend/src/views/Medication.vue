@@ -16,7 +16,7 @@
 						class="align-search"
 					></v-text-field>
 					<v-btn
-						color="#76C6D1"
+						color="#74e3e2"
 						dark
 						right
 						align-center
@@ -54,12 +54,13 @@
 		<v-col cols="3">
 			<v-card
 				class="pa-10"
-				height="40vh"
+				height="200px"
 			>
 				<v-data-table
 					:headers="headers"
 					:items="medicationTypes"
 					class="quantity-table"
+					hide-default-footer
 				>
 					<template v-slot:item="row">
 						<tr>
@@ -107,11 +108,11 @@ export default {
 	async mounted () {
 		this.medications = (await MedicationService.index()).data
 
-		for (let i = 0; i < this.medications; i++) {
+		for (let i = 0; i < this.medications.length; i++) {
 			if (this.medications[i].type == 'A') {
 				this.typeA++
 			} else {
-				typeB++
+				this.typeB++
 			}
 		}
 	},
@@ -129,10 +130,7 @@ export default {
 }
 
 .align-search {
-	margin-right: 10px;
+	margin-right: 30px;
 }
 
-.quantity-table > .v-data-footer {
-	display: none !important;
-}
 </style>

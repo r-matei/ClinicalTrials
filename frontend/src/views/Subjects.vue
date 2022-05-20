@@ -11,7 +11,17 @@
 				label="Caută"
 				single-line
 				hide-details
+				class="align-search"
 			></v-text-field>
+			<v-btn
+				color="#74e3e2"
+				dark
+				right
+				align-center
+				class="mx-4 mb-4"
+				@click="screenSubject()">
+				Screening
+			</v-btn>
 		</v-card-title>
 
 		<v-data-table
@@ -66,6 +76,11 @@ export default {
 	},
 	async mounted () {
 		this.subjects = (await SubjectService.index()).data
+	},
+	methods: {
+		screenSubject() {
+
+		}
 	}
 }
 </script>
@@ -73,5 +88,9 @@ export default {
 <style lang="css" scoped>
 .align-text {
 	text-align: center;
+}
+
+.align-search {
+	margin-right: 30px;
 }
 </style>

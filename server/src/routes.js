@@ -4,11 +4,11 @@ const SubjectController = require('./controllers/SubjectController')
 
 module.exports = (app) => {
 
-  app.get('/subjects', SubjectController.index)
+  app.get('/subjects', SubjectController.index) // done
 
-  app.post('/add-subject', SubjectController.post)
+  app.post('/add-subject', SubjectController.post) // done
 
-  app.get('/medication', MedicationController.index)
+  app.get('/medication', MedicationController.index) // done
 
   app.post('/upload-medication', MedicationController.upload)
     
