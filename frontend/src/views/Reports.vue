@@ -8,7 +8,7 @@
 				</v-card-title>
 				<v-card-content>
 					<v-btn
-						color="#74e3e2"
+						color="#406E8E"
 						dark
 						right
 						align-center
@@ -26,7 +26,7 @@
 				</v-card-title>
 				<v-card-content>
 					<v-btn
-						color="#74e3e2"
+						color="#406E8E"
 						dark
 						right
 						align-center

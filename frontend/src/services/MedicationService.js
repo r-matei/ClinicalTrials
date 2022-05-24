@@ -7,7 +7,15 @@ export default {
   },
 
   // upload medication file
-  upload () {
-    return Api().get('upload-medication')
+  upload (data) {
+    return Api().post('upload-medication', data)
+  },
+
+  assign (type) {
+    return Api().get(`assign-medication/${type}`)
+  },
+
+  update (id, medication) {
+    return Api().put(`update-medication/${id}`, medication)
   }
 }

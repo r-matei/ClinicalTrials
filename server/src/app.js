@@ -15,7 +15,7 @@ app.use(cors())
 
 require('./routes')(app)
 
-sequelize.sync() // {force: true} to delete all tables from database
+sequelize.sync({force: true}) // {force: true} to delete all tables from database
   .then(() => {
     http.listen(config.port)
     console.log(`Server started on port ${config.port}`)

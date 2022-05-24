@@ -4,41 +4,41 @@
     "subjectId": "1",
     "visitIndex": "0",
     "date": "2021-07-15 08:00",
-    "medicationId": "1"
+    "medicationId": "100"
   },
   {
     "name": "Randomizare",
     "subjectId": "1",
     "visitIndex": "1",
     "date": "2021-07-15 08:00",
-    "medicationId": "1"
+    "medicationId": "101"
   },
   {
     "name": "Screening",
     "subjectId": "2",
     "visitIndex": "0",
     "date": "2021-07-15 08:00",
-    "medicationId": "2"
+    "medicationId": "102"
   },
   {
     "name": "Randomizare",
     "subjectId": "2",
     "visitIndex": "1",
     "date": "2021-07-15 08:00",
-    "medicationId": "2"
+    "medicationId": "103"
   },
   {
     "name": "Screening",
     "subjectId": "3",
     "visitIndex": "0",
     "date": "2021-07-15 08:00",
-    "medicationId": "2"
+    "medicationId": "104"
   },
   {
     "name": "Randomizare",
     "subjectId": "3",
     "visitIndex": "1",
     "date": "2021-07-15 08:00",
-    "medicationId": "2"
+    "medicationId": "105"
   }
 ]

@@ -1,7 +1,7 @@
 <template>
 <div class="container">
 	<v-card
-		class="pa-10"
+		class="pa-9"
 		height="80vh"
 	>
 		<v-card-title>
@@ -14,7 +14,7 @@
 				class="align-search"
 			></v-text-field>
 			<v-btn
-				color="#74e3e2"
+				color="#406E8E"
 				dark
 				right
 				align-center
@@ -55,13 +55,18 @@
 			loading-text="Loading... Please wait"
 		></v-data-table>
   	</v-card>
+	<screen-subject-dialog :showDialog="screenSubjectDialog" @closeDialog="closeDialog"></screen-subject-dialog>
 </div>
 </template>
 
 <script>
 import SubjectService from '../services/SubjectsService'
+import ScreenSubjectDialog from '../components/ScreenSubjectDialog.vue'
 
 export default {
+	components: {
+		ScreenSubjectDialog
+	},
 	data () {
 		return {
 			subjects: [],
@@ -71,15 +76,27 @@ export default {
 				{ text: 'Data nașterii', value: 'birthDate' },
 				{ text: 'Gen', value: 'sex' },
 				{ text: 'Status', value: 'status' }
-			]
+			],
+			screenSubjectDialog: false
 		}
 	},
 	async mounted () {
-		this.subjects = (await SubjectService.index()).data
+		this.getSubjects()
 	},
 	methods: {
+		async getSubjects() {
+			this.subjects = (await SubjectService.index()).data
+		},
 		screenSubject() {
-
+			this.screenSubjectDialog = true;
+		},
+		closeDialog() {
+			this.screenSubjectDialog = false;
+		}
+	},
+	watch: {
+		screenSubjectDialog () {
+			this.getSubjects()
 		}
 	}
 }
@@ -87,7 +104,7 @@ export default {
 
 <style lang="css" scoped>
 .align-text {
-	text-align: center;
+	text-align: left;
 }
 
 .align-search {

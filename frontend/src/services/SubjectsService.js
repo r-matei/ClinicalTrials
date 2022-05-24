@@ -6,8 +6,13 @@ export default {
     return Api().get('subjects')
   },
 
+  //show subject by id
+  show (id) {
+    return Api().get(`subject/${id}`)
+  },
+
   // add a new subject
   post (subject) {
-    return Api().put('add-subject', subject)
+    return Api().post('add-subject', subject)
   }
 }

@@ -3,8 +3,8 @@
 	<v-row>
 		<v-col cols="9">
 			<v-card
-				class="pa-10"
-				height="80vh"
+				class="pa-9"
+				height="auto"
 			>
 				<v-card-title>
 					<v-text-field
@@ -15,13 +15,15 @@
 						hide-details
 						class="align-search"
 					></v-text-field>
+					<input type="file" id="file" ref="file" accept=".csv" v-on:change="handleFileUpload($event)" hidden/>
 					<v-btn
-						color="#74e3e2"
+						color="#406E8E"
 						dark
 						right
 						align-center
 						class="mx-4 mb-4"
-						@click="addVisit()">
+						ref="uploadBtn"
+						@click="openDialog()">
 						<v-icon>mdi-plus</v-icon>
 						Adaugă medicamente
 					</v-btn>
@@ -29,9 +31,10 @@
 
 				<v-data-table
 					v-if="medications"
-					:headers="headers"
+					:headers="headers1"
 					:items="medications"
 					:search="search"
+					:items-per-page="10"
 				>
 					<template v-slot:item="row">
 						<tr>
@@ -53,11 +56,11 @@
 		</v-col>
 		<v-col cols="3">
 			<v-card
-				class="pa-10"
+				class="pa-9"
 				height="200px"
 			>
 				<v-data-table
-					:headers="headers"
+					:headers="headers2"
 					:items="medicationTypes"
 					class="quantity-table"
 					hide-default-footer
@@ -83,12 +86,20 @@ export default {
 		return {
 			medications: [],
 			search: '',
-			headers: [
+			headers1: [
+				{ text: 'Id medicament', value: 'id' },
+				{ text: 'Tip medicament', value: 'type' },
+				{ text: 'Status medicament', value: 'status' }
+			],
+			headers2: [
 				{ text: 'Tip medicament', value: 'type' },
 				{ text: 'Cantitate', value: 'qty' }
 			],
 			typeA: 0,
-			typeB: 0
+			typeB: 0,
+			file: '',
+			content: [],
+			parsed: false
 		}
 	},
 	computed: {
@@ -103,22 +114,41 @@ export default {
 					qty: this.typeB
 				}
 			]
-		}
+		},
 	},
 	async mounted () {
-		this.medications = (await MedicationService.index()).data
-
-		for (let i = 0; i < this.medications.length; i++) {
-			if (this.medications[i].type == 'A') {
-				this.typeA++
-			} else {
-				this.typeB++
-			}
-		}
+		this.getMedication()
 	},
 	methods: {
-		addVisit () {
+		async getMedication() {
+			this.medications = (await MedicationService.index()).data
 
+			for (let i = 0; i < this.medications.length; i++) {
+				if (this.medications[i].type == 'A') {
+					this.typeA++
+				} else {
+					this.typeB++
+				}
+			}
+		},
+		openDialog() {
+			this.$refs.file.click()
+		},
+		handleFileUpload(event) {
+			this.file = event.target.files[0]
+			this.parseFile()
+		},
+		parseFile() {
+			this.$papa.parse(this.file, {
+				header: true,
+				skipEmptyLines: true,
+				complete: async function(results) {
+					this.content = results
+					await MedicationService.upload(this.content.data)
+					this.parsed = true
+				}.bind(this)
+			})
+			location.reload()
 		}
 	}
 }
@@ -126,7 +156,7 @@ export default {
 
 <style lang="css" scoped>
 .align-text {
-	text-align: center;
+	text-align: left;
 }
 
 .align-search {

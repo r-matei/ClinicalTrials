@@ -1,25 +1,14 @@
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 import router from './router'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
-import '@mdi/font/css/materialdesignicons.css'
-import VueResource from 'vue-resource'
+import vuetify from './plugins/vuetify'
+import VuePapaParse from 'vue-papa-parse'
 
 Vue.config.productionTip = false
+Vue.use(VuePapaParse)
 
-Vue.use(Vuetify)
-Vue.use(VueResource)
-
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
-  vuetify: new Vuetify({
-    icons: {
-      defaultSet: 'mdi'
-    }
-  }),
-  components: { App },
-  template: '<App/>'
-})
+  vuetify,
+  render: h => h(App)
+}).$mount('#app')

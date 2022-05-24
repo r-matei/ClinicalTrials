@@ -1,4 +1,6 @@
 const { SubjectVisit } = require('../models')
+const { Medication } = require('../models')
+const MedicationController = require('./MedicationController')
 
 module.exports = {
   async index (req, res) {
