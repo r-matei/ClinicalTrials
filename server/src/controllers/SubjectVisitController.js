@@ -35,7 +35,6 @@ module.exports = {
           id: id
         }
       })
-      console.log(visit)
       res.send(visit)
     } catch (err) {
       res.status(500).send({

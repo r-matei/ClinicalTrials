@@ -57,7 +57,6 @@ module.exports = {
   async upload (req, res) {
     try {
       for (let i = 0; i < req.body.length; i++) {
-        console.log(req.body[i])
         await Medication.create({
           type: req.body[i].type,
           status: req.body[i].status
