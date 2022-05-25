@@ -116,11 +116,17 @@
                 right
                 align-center
                 class="mx-7 button"
+                @click.prevent="editVisit()"
             >
-                Finalizare tratament
+                Editare dată
             </v-btn>
         </v-col> 
         <error-dialog :error="error" :showDialog="showErrorDialog"  @closeDialog="closeDialog"></error-dialog>
+        <edit-date-dialog
+            :showDialog="showEditDateDialog"
+            :visit="finishedVisits[finishedVisits.length-1]"
+            @closeDialog="closeEditDialog"
+        />
     </v-row>
 </template>
     
@@ -129,9 +135,12 @@ import SubjectService from '../services/SubjectsService'
 import VisitsService from '../services/VisitsService'
 import MedicationService from '../services/MedicationService'
 import ErrorDialog from '../components/ErrorDialog.vue'
+import EditDateDialog from '../components/EditDateDialog.vue'
+
 export default {
     components: {
-        ErrorDialog
+        ErrorDialog,
+        EditDateDialog
     },
     data () {
         return {
@@ -139,6 +148,7 @@ export default {
             nextAppointmentDate: '',
             lastAppointmentDate: '',
             showErrorDialog: false,
+            showEditDateDialog: false,
             error: null,
             visits: [],
             finishedVisits: [],
@@ -197,7 +207,6 @@ export default {
                 this.showErrorDialog = true
                 return
             }
-            console.log(medication.data)
             this.updateMedication(medication.data)
             const visit = {
                 name: this.visits[this.finishedVisits.length].name,
@@ -220,11 +229,18 @@ export default {
         closeDialog() {
             this.showErrorDialog = false
         },
+        closeEditDialog() {
+            this.showEditDateDialog = false
+            this.getVisits(this.$route.params.subjectId)
+        },
         async updateMedication(medication) {
             await MedicationService.update(medication.id, {
                 type: medication.type,
                 status: 'Asignat'
             })
+        },
+        editVisit() {
+            this.showEditDateDialog = true
         }
     }
 }

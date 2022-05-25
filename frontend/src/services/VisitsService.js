@@ -11,6 +11,11 @@ export default {
     return Api().post('add-visit', visit)
   },
 
+  // update a visit
+  update (id, visit) {
+    return Api().put(`update-visit/${id}`, visit)
+  },
+
   // delete visit
   delete (visitId) {
     return Api().delete(`delete-visit/${visitId}`)

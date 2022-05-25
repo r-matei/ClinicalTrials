@@ -1,6 +1,4 @@
 const { SubjectVisit } = require('../models')
-const { Medication } = require('../models')
-const MedicationController = require('./MedicationController')
 
 module.exports = {
   async index (req, res) {
@@ -26,6 +24,22 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: 'an error has occured trying to create this appointment'
+      })
+    }
+  },
+  async update(req, res) {
+    try {
+      const id = req.params.id
+      let visit = await SubjectVisit.update(req.body, {
+        where: {
+          id: id
+        }
+      })
+      console.log(visit)
+      res.send(visit)
+    } catch (err) {
+      res.status(500).send({
+        error: err
       })
     }
   },

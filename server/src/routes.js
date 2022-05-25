@@ -22,6 +22,8 @@ module.exports = (app) => {
 
   app.post('/add-visit', SubjectVisitController.post)
 
+  app.put('/update-visit/:id', SubjectVisitController.update)
+
   app.delete('/delete-visit/:visitId', SubjectVisitController.delete)
 
 }
